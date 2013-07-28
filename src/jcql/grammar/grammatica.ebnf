@@ -1,0 +1,46 @@
+# per motivi implementativi, dentro [ ] non è possibile specificare costanti double (sarebbero comunque
+# rifiutati dal parser
+
+<query> ::= <or_term> [ OR <or_term> ] *
+<or_term> ::= <and_term> [ AND <and_term> ] *
+<and_term> ::= <expression> RELOP <expression> | NOT <and_term> | OPAR <query> CPAR
+<expression> ::= <add_term> [ ADDOP <add_term> ] *
+<add_term> ::= <mul_term> [ MULOP <mul_term> ] *
+<mul_term> ::= [ ADDOP ] NUM | <value> | [ FUNCTION ] OPAR <expression> CPAR | STRING_CONST | NULL
+<value> ::= <firstvalue> [ DOT <othervalues> ] *
+<firstvalue> ::= ( ID | THIS ) [ OSPAR <expression> CSPAR ] *
+<othervalues> ::= ID [ OSPAR <expression> CSPAR ] *
+NULL ::= null
+STRING_CONST ::= SINGLE_QUOTE CHAR * SINGLE_QUOTE
+SINGLE_QUOTE ::= '
+CHAR ::= (tutti i caratteri)
+OPAR ::= (
+CPAR ::= )
+NUM ::= DOT INT | INT [ DOT [ INT ] ]
+OSPAR ::= [
+CSPAR ::= ]
+ID ::= START_CHAR ( OTHER_CHAR ) *
+INT ::= (0 | ... | 9)+
+START_CHAR ::= a | ... | z | A | ... | Z | _
+OTHER_CHAR ::= a | ... | z | A | ... | Z | _ | 0 | ... | 9
+RELOP ::= LT | LE | GT | GE | EQ | NEQ | MATCH
+LT ::= <
+LE ::= <=
+GT ::= >
+GE ::= >=
+EQ ::= ==
+NEQ ::= !=
+MATCH ::= |=
+ADDOP ::= ADD | SUB
+MULOP ::= MUL | DIV | MOD
+ADD ::= +
+SUB ::= -
+MUL ::= *
+DIV ::= /
+MOD ::= %
+OR ::= |
+AND ::= &
+NOT ::= !
+DOT ::= .
+FUNCTION ::= str | num | size
+THIS ::= this
