@@ -14,7 +14,7 @@
 			   <mul_term> { builder.build( <add_term>.op ) } ] *
 			   
 <mul_term> ::= ( { <mul_term>.segno = 1 } ( ADD | eps | SUB { <mul_term>.segno = -1 } ) NUM { builder.build(new Costante(lex.getValue()*<mul_term>.segno)) }
-			   | <value>
+			   | <value> 			   
 			   | ( NUM { <mul_term>.op = NUM } | STR { <mul_term>.op = STR } | SIZE { <mul_term>.op = SIZE } ) OPAR <expression> CPAR { builder.build(<mul_term>.op) }
 			   | OPAR <query> CPAR
 			   | STRING_CONST { builder.build(new StringCostant(lex.getString())) } 

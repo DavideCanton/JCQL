@@ -2,37 +2,41 @@ package jcql.lex;
 
 /**
  * Il tipo dei simboli letti dal parser.
- * 
+ *
  * @author davide
  */
 public enum Token
 {
-	ADD("+"), SUB("-"), MUL("*"), DIV("/"), MOD("%"), EOF, INVALID, THIS("this"), OPAR("("), CPAR(")"), AND("&"), OR("|"), MATCH("|="), EQUAL("="), GT(">"), GE(">="), LT("<"), LE("<="), NEQUAL("!="), NOT("!"), DOUBLE_CONSTANT, STRING_CONSTANT, ID, NULL("null"), STR("str"), NUM("num"), SIZE("size"), OSPAR("["), CSPAR("]"), DOT(".");
+    ADD("+"), SUB("-"), MUL("*"), DIV("/"), MOD("%"), EOF, INVALID,
+    THIS("this"), OPAR("("), CPAR(")"), AND("&"), OR("|"), MATCH("|="),
+    EQUAL("="), GT(">"), GE(">="), LT("<"), LE("<="), NEQUAL("!="), NOT("!"),
+    DOUBLE_CONSTANT, STRING_CONSTANT, ID, NULL("null"), STR("str"), NUM("num"),
+    SIZE("size"), OSPAR("["), CSPAR("]"), DOT(".");
 
-	private String symbol;
+    private String symbol;
 
-	private Token()
-	{
-	}
+    Token()
+    {
+    }
 
-	private Token(String s)
-	{
-		this.symbol = s;
-	}
+    Token(String s)
+    {
+        this.symbol = s;
+    }
 
-	public String getSymbol()
-	{
-		return symbol;
-	}
+    public String getSymbol()
+    {
+        return symbol;
+    }
 
-	public void setSymbol(String symbol)
-	{
-		this.symbol = symbol;
-	}
+    public void setSymbol(String symbol)
+    {
+        this.symbol = symbol;
+    }
 
-	@Override
-	public String toString()
-	{
-		return (symbol != null ? symbol + " " : "") + "[" + name() + "]";
-	}
+    @Override
+    public String toString()
+    {
+        return (symbol != null ? symbol + " " : "") + "[" + name() + "]";
+    }
 }

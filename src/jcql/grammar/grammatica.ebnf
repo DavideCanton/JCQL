@@ -1,5 +1,5 @@
-# per motivi implementativi, dentro [ ] non è possibile specificare costanti double (sarebbero comunque
-# rifiutati dal parser
+// per motivi implementativi, dentro [ ] non è possibile specificare costanti double (sarebbero comunque
+// rifiutati dal parser
 
 <query> ::= <or_term> [ OR <or_term> ] *
 <or_term> ::= <and_term> [ AND <and_term> ] *
@@ -11,7 +11,7 @@
 <firstvalue> ::= ( ID | THIS ) [ OSPAR <expression> CSPAR ] *
 <othervalues> ::= ID [ OSPAR <expression> CSPAR ] *
 NULL ::= null
-STRING_CONST ::= SINGLE_QUOTE CHAR * SINGLE_QUOTE
+STRING_CONST ::= SINGLE_QUOTE CHAR* SINGLE_QUOTE
 SINGLE_QUOTE ::= '
 CHAR ::= (tutti i caratteri)
 OPAR ::= (
@@ -19,7 +19,7 @@ CPAR ::= )
 NUM ::= DOT INT | INT [ DOT [ INT ] ]
 OSPAR ::= [
 CSPAR ::= ]
-ID ::= START_CHAR ( OTHER_CHAR ) *
+ID ::= START_CHAR (OTHER_CHAR)*
 INT ::= (0 | ... | 9)+
 START_CHAR ::= a | ... | z | A | ... | Z | _
 OTHER_CHAR ::= a | ... | z | A | ... | Z | _ | 0 | ... | 9

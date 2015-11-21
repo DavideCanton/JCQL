@@ -4,7 +4,7 @@ import jcql.visitor.*;
 
 public class Bool extends Leaf
 {
-	private boolean value;
+	private final boolean value;
 
 	public Bool(boolean value)
 	{
